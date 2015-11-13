@@ -16,9 +16,13 @@ public class MovementSystem extends EntityProcessingSystem {
 		super(Aspect.all(Position.class, Velocity.class));
 	}
 
-	@Override protected void process(Entity e) {
+	@Override
+	protected void process(Entity e) {
 		Position position = mPosition.create(e);
 		Velocity velocity = mVelocity.create(e);
+
+		if (position.getX() > 500 || position.getX() < 0) velocity.invertX();
+		if (position.getY() > 500 || position.getY() < 0) velocity.invertY();
 
 		position.setX(position.getX() + velocity.getX());
 		position.setY(position.getY() + velocity.getY());

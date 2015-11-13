@@ -10,23 +10,18 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.openbargames.blackbeard.core.component.Graphic;
 import com.openbargames.blackbeard.core.component.Position;
 import com.openbargames.blackbeard.core.component.Velocity;
 import com.openbargames.blackbeard.core.system.MovementSystem;
 
 public class Game implements ApplicationListener {
-	Texture texture;
-	SpriteBatch batch;
-	float elapsed;
 
 	private World world;
 	private EntityBuilder entityBuilder;
 
 	@Override
 	public void create () {
-		texture = new Texture(Gdx.files.internal("libgdx-logo.png"));
-		batch = new SpriteBatch();
-
 		createWorld();
 		createEntityBuilder();
 		Entity entity = entityBuilder.build();
@@ -40,13 +35,6 @@ public class Game implements ApplicationListener {
 
 	@Override
 	public void render () {
-		elapsed += Gdx.graphics.getDeltaTime();
-		Gdx.gl.glClearColor(0, 0, 0, 0);
-		Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
-		batch.begin();
-		batch.draw(texture, 100+100*(float)Math.cos(elapsed), 100+25*(float)Math.sin(elapsed));
-		batch.end();
-
 		world.setDelta(Gdx.graphics.getDeltaTime());
 		world.process();
 	}
@@ -73,6 +61,6 @@ public class Game implements ApplicationListener {
 
 	private void createEntityBuilder() {
 		entityBuilder = new EntityBuilder(world)
-				.with(new Position(), new Velocity(1, 1));
+				.with(new Position(), new Velocity(1, 1), new Graphic(new Texture(Gdx.files.internal("libgdx-logo.png"))));
 	}
 }

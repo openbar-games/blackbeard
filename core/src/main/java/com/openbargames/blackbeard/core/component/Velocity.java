@@ -14,6 +14,14 @@ public class Velocity extends Component {
 		this.y = y;
 	}
 
+	public void invertX() {
+		x *= -1;
+	}
+
+	public void invertY() {
+		y *= -1;
+	}
+
 	public int getY() {
 		return y;
 	}
