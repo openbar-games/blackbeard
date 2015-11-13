@@ -1,11 +1,11 @@
-package com.openbargames.blackbeard.system;
+package com.openbargames.blackbeard.core.system;
 
 import com.artemis.Aspect;
 import com.artemis.ComponentMapper;
 import com.artemis.Entity;
 import com.artemis.systems.EntityProcessingSystem;
-import com.openbargames.blackbeard.component.Position;
-import com.openbargames.blackbeard.component.Velocity;
+import com.openbargames.blackbeard.core.component.Position;
+import com.openbargames.blackbeard.core.component.Velocity;
 
 public class MovementSystem extends EntityProcessingSystem {
 

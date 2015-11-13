@@ -1,4 +1,4 @@
-package com.openbargames.blackbeard.component;
+package com.openbargames.blackbeard.core.component;
 
 import com.artemis.Component;
 
